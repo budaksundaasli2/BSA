@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BSA Template Editor - Soft & Modern Controls</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amaranth:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+</head>
+<body>
+    <div id="editor">
+        <img id="background"/>
+        <div class="gradient top-gradient"></div>
+        <div class="gradient bottom-gradient"></div>
+        <div id="text">Template<br>Saya</div>
+        <img id="logo" src="logo-bsa.png" alt="Logo BSA" />
+    </div>
+
+    <div class="controls">
+        <label for="bgInput">Pilih Gambar Latar Belakang:</label>
+        <input type="file" accept="image/*" id="bgInput" /><br />
+
+        <label for="textInput">Tulis Teks di Sini:</label>
+        <input type="text" id="textInput" placeholder="Masukkan teks Anda" /><br />
+
+        <div class="button-group">
+            <button id="previewBtn">Preview</button>
+            <button id="saveBtn">Unduh</button>
+        </div>
+    </div>
+
+    <!-- Modal untuk Crop -->
+    <div id="cropModal" class="modal">
+        <div class="modal-content">
+            <div id="cropContainer">
+                <img id="cropImage" src="" alt="Gambar untuk di-crop">
+            </div>
+            <div class="crop-buttons">
+                <button id="cropBtn">Crop</button>
+                <button id="cancelCropBtn">Batal</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal untuk Preview -->
+    <div id="previewModal" class="modal">
+        <div class="preview-content">
+            <img id="previewImage" src="" alt="Preview">
+            <div class="preview-buttons">
+                <button id="downloadBtn">Unduh</button>
+                <button id="cancelPreviewBtn">Batal</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

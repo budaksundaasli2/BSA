@@ -1,0 +1,276 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    background: #f0f2f5;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    color: #333;
+}
+#editor {
+    position: relative;
+    width: 360px;
+    max-width: 90%;
+    height: 360px;
+    background-color: #ffffff;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+#background {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    z-index: 0;
+}
+.gradient {
+    position: absolute;
+    width: 100%;
+    height: 90px;
+    z-index: 1;
+}
+.top-gradient {
+    top: 0px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+}
+.bottom-gradient {
+    bottom: 0px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+}
+#text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    z-index: 2;
+    white-space: pre-line;
+    padding: 0 20px;
+    width: 90%;
+    word-wrap: break-word;
+    font-weight: bold;
+    font-family: 'Amaranth', sans-serif;
+    text-shadow:
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    line-height: 1.4;
+}
+#logo {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    z-index: 2;
+    opacity: 0.5;
+}
+.controls {
+    margin-top: 35px;
+    text-align: left;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    width: 380px;
+    max-width: 90%;
+    border: 1px solid #e0e0e0;
+}
+.controls label {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: #555;
+    font-size: 15px;
+}
+input[type="file"]::file-selector-button {
+    background-color: #e6f7ff;
+    color: #007bff;
+    border: 1px solid #b3d9ff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    font-size: 14px;
+    font-weight: 500;
+}
+input[type="file"]::file-selector-button:hover {
+    background-color: #d1efff;
+    border-color: #8cbbff;
+}
+input::placeholder {
+    color: #a0a0a0;
+    font-weight: 400;
+}
+input[type="file"],
+input[type="text"] {
+    margin-bottom: 25px;
+    width: calc(100% - 2px);
+    padding: 14px 18px;
+    background: #fdfdfd;
+    border: 1px solid #e5e5e5;
+    border-radius: 10px;
+    color: #333;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+input[type="file"]:focus,
+input[type="text"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+.button-group {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+}
+#previewBtn {
+    background-color: #2196F3;
+}
+#saveBtn {
+    background-color: #4CAF50;
+}
+button {
+    flex: 1;
+    margin: 0;
+    padding: 16px 20px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+    min-width: 120px;
+}
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}#cropBtn,
+#cancelCropBtn {
+    background-color: #2196F3; /* Sama seperti #previewBtn */
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 14px 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    margin: 0 5px;
+    min-width: 120px;
+}
+
+#cropBtn:hover,
+#cancelCropBtn:hover {
+    background-color: #1976D2; /* Hover effect sama seperti #previewBtn */
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+#previewBtn:hover {
+    background-color: #1976D2;
+}
+#saveBtn:hover {
+    background-color: #45a049;
+}
+/* Modal Crop */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.modal-content {
+    position: relative;
+    margin: auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 600px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border-radius: 15px;
+}
+#cropContainer {
+    width: 100%;
+    max-height: 70vh;
+    overflow: hidden;
+}
+#cropImage {
+    max-width: 100%;
+    display: block;
+}
+.crop-buttons {
+    margin-top: 20px;
+    text-align: center;
+}
+@media (max-width: 480px) {
+    body { padding: 15px; }
+    #editor { width: 100%; height: auto; aspect-ratio: 1 / 1; max-width: 360px; }
+    #text { font-size: 18px; padding: 0 15px; }
+    #logo { width: 50px; }
+    .controls { padding: 25px; width: 100%; border-radius: 15px; }
+    .controls label { font-size: 14px; margin-bottom: 10px; }
+    input[type="file"]::file-selector-button { padding: 8px 15px; font-size: 13px; }
+    input[type="file"], input[type="text"] { padding: 12px 15px; margin-bottom: 20px; font-size: 15px; }
+    button { padding: 14px 30px; font-size: 17px; border-radius: 10px; }
+}
+/* Modal Preview */
+#previewModal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.preview-content {
+    position: relative;
+    margin: auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 400px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border-radius: 15px;
+    text-align: center;
+}
+#previewImage {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.preview-buttons {
+    display: flex;
+    margin-top: 20px;
+}
+.preview-buttons button {
+    margin: 0;
+}
+#downloadBtn {
+    background-color: #4CAF50;
+}
+#cancelPreviewBtn {
+    background-color: #6c757d;
+}
