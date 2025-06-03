@@ -40,6 +40,8 @@ bgInput.addEventListener("change", function(e) {
                 cropBoxMovable: false,
                 cropBoxResizable: false,
                 toggleDragModeOnDblclick: false,
+                imageSmoothingEnabled: true,
+                imageSmoothingQuality: 'high'
             });
         }
         reader.readAsDataURL(file);
@@ -49,10 +51,12 @@ bgInput.addEventListener("change", function(e) {
 cropBtn.addEventListener("click", function() {
     if (cropper) {
         const canvas = cropper.getCroppedCanvas({
-            width: 360,
-            height: 360
+            width: 1080,
+            height: 1080,
+            imageSmoothingEnabled: true,
+            imageSmoothingQuality: 'high'
         });
-        background.src = canvas.toDataURL();
+        background.src = canvas.toDataURL('image/jpeg', 1.0);
         cropModal.style.display = "none";
         cropper.destroy();
         cropper = null;
@@ -88,7 +92,7 @@ function generateImage(callback) {
         const hdSize = 1080;
         canvas.width = hdSize;
         canvas.height = hdSize;
-        const ctx = canvas.getContext("2d");
+        const ctx = canvas.getContext("2d", { alpha: false });
 
         ctx.imageSmoothingEnabled = true;
         ctx.imageSmoothingQuality = 'high';
