@@ -2,6 +2,7 @@
 const bgInput = document.getElementById("bgInput");
 const background = document.getElementById("background");
 const logo = document.getElementById("logo");
+const originalBsa = document.getElementById("original-bsa");
 const textInput = document.getElementById("textInput");
 const text = document.getElementById("text");
 const saveBtn = document.getElementById("saveBtn");
@@ -159,6 +160,16 @@ function generateImage(callback) {
             ctx.fillStyle = gradBottom;
             ctx.fillRect(0, hdSize - gradientHeight, hdSize, gradientHeight);
 
+            // Gambar original-bsa
+            const originalBsaImg = new Image();
+            originalBsaImg.crossOrigin = "anonymous";
+            originalBsaImg.src = "original-bsa.png";
+            originalBsaImg.onload = () => {
+                const originalBsaWidth = Math.floor(hdSize * 0.14);
+                const originalBsaHeight = Math.floor(hdSize * 0.14);
+                ctx.drawImage(originalBsaImg, 0, hdSize - originalBsaHeight, originalBsaWidth, originalBsaHeight);
+            };
+
             const maxTextWidth = hdSize - (hdSize * 0.167);
             const wrappedLines = smartWordWrap(text.textContent, maxTextWidth);
             const totalTextHeight = wrappedLines.length * lineHeight;
@@ -186,7 +197,7 @@ function generateImage(callback) {
                 const logoHeight = logoWidth * aspectRatio;
                 const x = hdSize / 2 - logoWidth / 2;
                 const y = hdSize - logoHeight;
-                ctx.globalAlpha = 0.5;
+                ctx.globalAlpha = 0.6;
                 ctx.drawImage(logoImg, x, y, logoWidth, logoHeight);
                 ctx.globalAlpha = 1.0;
                 callback(canvas.toDataURL("image/png", 1.0));
