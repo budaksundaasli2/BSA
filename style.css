@@ -58,10 +58,10 @@ body {
     font-weight: bold;
     font-family: 'Amaranth', sans-serif;
     text-shadow:
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000;
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000;
     line-height: 1.4;
 }
 #logo {
@@ -71,11 +71,11 @@ body {
     transform: translateX(-50%);
     width: 70px;
     z-index: 2;
-    opacity: 0.5;
+    opacity: 0.6;
 }
 #original-bsa {
-    width: 14px;
-    height: 14px;
+    width: 14%;
+    height: 14%;
     position: absolute;
     left: 20px;
     bottom: 20px;
@@ -164,27 +164,6 @@ button {
     min-width: 120px;
 }
 button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-}#cropBtn,
-#cancelCropBtn {
-    background-color: #2196F3; /* Sama seperti #previewBtn */
-    border: none;
-    color: white;
-    cursor: pointer;
-    border-radius: 12px;
-    font-size: 16px;
-    font-weight: 700;
-    padding: 14px 20px;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
-    margin: 0 5px;
-    min-width: 120px;
-}
-
-#cropBtn:hover,
-#cancelCropBtn:hover {
-    background-color: #1976D2; /* Hover effect sama seperti #previewBtn */
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
