@@ -3,7 +3,6 @@ const bgInput = document.getElementById("bgInput");
 const background = document.getElementById("background");
 const logo = document.getElementById("logo");
 const originalBsa = document.getElementById("original-bsa");
-const textInput = document.getElementById("textInput");
 const text = document.getElementById("text");
 const saveBtn = document.getElementById("saveBtn");
 const cropModal = document.getElementById("cropModal");
@@ -15,7 +14,17 @@ const previewImage = document.getElementById("previewImage");
 const downloadBtn = document.getElementById("downloadBtn");
 const cancelPreviewBtn = document.getElementById("cancelPreviewBtn");
 const previewBtn = document.getElementById("previewBtn");
+const shareTiktokBtn = document.getElementById("shareTiktokBtn");
 let cropper = null;
+
+// Event listener untuk text yang bisa diedit
+text.addEventListener("input", function() {
+    if (previewModal.style.display === "block") {
+        generateImage((imageData) => {
+            previewImage.src = imageData;
+        });
+    }
+});
 
 // Event listener untuk input gambar
 bgInput.addEventListener("change", function(e) {
@@ -73,16 +82,6 @@ cancelCropBtn.addEventListener("click", function() {
     if (cropper) {
         cropper.destroy();
         cropper = null;
-    }
-});
-
-// Event listener untuk input teks
-textInput.addEventListener("input", function(e) {
-    text.textContent = e.target.value;
-    if (previewModal.style.display === "block") {
-        generateImage((imageData) => {
-            previewImage.src = imageData;
-        });
     }
 });
 
