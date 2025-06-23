@@ -326,3 +326,63 @@ button:hover {
 #cancelPreviewBtn {
     background-color: #6c757d;
 }
+.navbar-bawah {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0,0,0,0.6) !important;
+    border-top: none !important;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px 0;
+    z-index: 1000;
+}
+.navbar-bawah button {
+    background: none;
+    border: none;
+    font-size: 1.1em;
+    padding: 8px 20px;
+    cursor: pointer;
+    color: #fff !important;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+.navbar-bawah button:hover {
+    background: #f0f0f0;
+}
+@media (max-width: 600px) {
+    .navbar-bawah {
+        padding: 0;
+        height: 60px;
+        min-height: 56px;
+        border-radius: 0;
+    }
+    .navbar-bawah button {
+        flex: 1 1 50%;
+        font-size: 1.2em;
+        padding: 14px 0;
+        min-width: 0;
+        border-radius: 0;
+        margin: 0;
+        height: 60px;
+    }
+}
+.icon-navbar {
+    display: inline-flex;
+    vertical-align: middle;
+    margin-right: 7px;
+    align-items: center;
+}
+.icon-home svg {
+    color: #2196F3;
+}
+.icon-save svg {
+    color: #4CAF50;
+}
+@media (max-width: 600px) {
+    #modalTersimpan #listTersimpan {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
