@@ -381,6 +381,13 @@ button:hover {
 .icon-save svg {
     color: #4CAF50;
 }
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #000;
+  color: #fff;
+  font-size: 0.9rem;
+}
 @media (max-width: 600px) {
     #modalTersimpan #listTersimpan {
         grid-template-columns: repeat(2, 1fr) !important;
