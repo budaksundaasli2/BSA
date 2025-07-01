@@ -299,7 +299,7 @@ function generateImage(callback) {
             };
 
             const maxTextWidth = hdSize - (hdSize * 0.167);
-            const wrappedLines = smartWordWrap(text.textContent, maxTextWidth);
+            const wrappedLines = smartWordWrap(text.innerText, maxTextWidth);
             const totalTextHeight = wrappedLines.length * lineHeight;
             const startY = (hdSize / 2) - (totalTextHeight / 2) + (lineHeight / 2);
 
