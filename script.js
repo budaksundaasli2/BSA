@@ -289,13 +289,26 @@ function generateImage(callback) {
             ctx.fillRect(0, hdSize - gradientHeight, hdSize, gradientHeight);
 
             // Gambar original-bsa
-            const originalBsaImg = new Image();
-            originalBsaImg.crossOrigin = "anonymous";
-            originalBsaImg.src = "original-bsa.png";
-            originalBsaImg.onload = () => {
-                const originalBsaWidth = Math.floor(hdSize * 0.14);
-                const originalBsaHeight = Math.floor(hdSize * 0.14);
-                ctx.drawImage(originalBsaImg, 0, hdSize - originalBsaHeight, originalBsaWidth, originalBsaHeight);
+             // Blur area kiri bawah tanpa PNG
+const blurWidth = Math.floor(hdSize * 0.20);
+const blurHeight = Math.floor(hdSize * 0.14);
+const x = hdSize - blurWidth;
+const y = hdSize - blurHeight;
+
+ctx.save();
+ctx.filter = "blur(10px)";
+
+// ambil potongan background lalu gambar ulang dengan blur
+ctx.drawImage(
+    canvas,
+    x,
+    y,
+    blurWidth,
+    blurHeight,
+    x,
+    y,
+    blurWidth,
+    blurHeight;
             };
 
             const maxTextWidth = hdSize - (hdSize * 0.167);
