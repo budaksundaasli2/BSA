@@ -141,6 +141,19 @@ function simpanKeTersimpan(imageData) {
     if (data.length > 20) data = data.slice(0, 20); // batasi 20 gambar
     localStorage.setItem('bsaTersimpan', JSON.stringify(data));
 }
+//BSAwaktu
+function generateFileName() {
+    const now = new Date();
+
+    const tanggal = String(now.getDate()).padStart(2, '0');
+    const bulan = String(now.getMonth() + 1).padStart(2, '0');
+    const tahun = now.getFullYear();
+
+    const jam = String(now.getHours()).padStart(2, '0');
+    const menit = String(now.getMinutes()).padStart(2, '0');
+
+    return `BSA_${tanggal}-${bulan}-${tahun}_${jam}-${menit}.png`;
+}
 
 // Event listener untuk text yang bisa diedit
 text.addEventListener("input", function() {
@@ -365,7 +378,7 @@ previewBtn.addEventListener("click", () => {
 saveBtn.addEventListener("click", () => {
     generateImage((imageData) => {
         const link = document.createElement("a");
-        link.download = "Gambar_BSA.png";
+link.download = generateFileName();
         link.href = imageData;
         document.body.appendChild(link);
         link.click();
@@ -376,7 +389,7 @@ saveBtn.addEventListener("click", () => {
 
 downloadBtn.addEventListener("click", () => {
     const link = document.createElement("a");
-    link.download = "Gambar_BSA.png";
+    link.download = generateFileName();
     link.href = previewImage.src;
     document.body.appendChild(link);
     link.click();
