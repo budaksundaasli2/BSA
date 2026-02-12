@@ -91,14 +91,6 @@ body {
     z-index: 2;
     opacity: 0.6;
 }
-#original-bsa {
-    width: 14%;
-    height: 14%;
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    z-index: 2;
-}
 .controls {
     margin-top: 35px;
     text-align: left;
