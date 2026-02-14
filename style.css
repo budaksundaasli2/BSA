@@ -1,4 +1,4 @@
-* {
+no* {
     box-sizing: border-box;
 }
 body {
@@ -364,6 +364,7 @@ button:hover {
 }
 .footer {
   text-align: center;
+  align-self: stretch;
   padding: 1rem;
   background-color: #000;
   color: #fff;
