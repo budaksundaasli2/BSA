@@ -133,13 +133,6 @@ function tampilkanModalGambarTersimpan(img, index) {
 navHome.addEventListener('click', () => {
     window.location.reload();
 });
-navTersimpan.addEventListener('click', tampilkanTersimpan);
-
-function simpanKeTersimpan(imageData) {
-    let data = JSON.parse(localStorage.getItem('bsaTersimpan') || '[]');
-    data.unshift(imageData); // simpan terbaru di depan
-    if (data.length > 20) data = data.slice(0, 20); // batasi 20 gambar
-    localStorage.setItem('bsaTersimpan', JSON.stringify(data));
 }
 //BSAwaktu
 function generateFileName() {
